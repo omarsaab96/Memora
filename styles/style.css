@@ -108,6 +108,7 @@ body {
 
     .image {
         width: 80%;
+        bottom:-50px;
     }
 
     .comingSoon {
