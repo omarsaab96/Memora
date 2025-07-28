@@ -303,6 +303,9 @@ section ul li {
   padding-left: 40px;
   position: relative;
 }
+section ul li b {
+  font-size: 18px;
+}
 section ul li::before {
   position: absolute;
   top: 50%;

@@ -356,6 +356,10 @@ section {
             padding-left:40px;
             position: relative;
 
+            b{
+                font-size:18px;
+            }
+
             &::before {
                 position: absolute;
                 top:50%;
