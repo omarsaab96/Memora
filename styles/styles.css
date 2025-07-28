@@ -1,0 +1,405 @@
+@font-face {
+  font-family: "Bauhaus";
+  src: url("./fonts/BauhausStd-Demi.eot");
+  src: local("Bauhaus Std Demi"), local("./fonts/BauhausStd-Demi"), url("./fonts/BauhausStd-Demi.eot?#iefix") format("embedded-opentype"), url("./fonts/BauhausStd-Demi.woff2") format("woff2"), url("./fonts/BauhausStd-Demi.woff") format("woff"), url("./fonts/BauhausStd-Demi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bauhaus";
+  src: url("./fonts/BauhausStd-Light.eot");
+  src: local("Bauhaus Std Light"), local("./fonts/BauhausStd-Light"), url("./fonts/BauhausStd-Light.eot?#iefix") format("embedded-opentype"), url("./fonts/BauhausStd-Light.woff2") format("woff2"), url("./fonts/BauhausStd-Light.woff") format("woff"), url("./fonts/BauhausStd-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bauhaus", sans-serif;
+  font-weight: normal;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #00D6CA;
+}
+.links .logoDiv {
+  flex: 0 0 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.links .logoDiv img.logo {
+  width: 275px;
+}
+.links .contentDiv {
+  flex: 0 0 70%;
+  width: 100%;
+  max-width: 280px;
+}
+.links .contentDiv ul {
+  width: 100%;
+  list-style: none;
+}
+.links .contentDiv ul li {
+  margin-bottom: 20px;
+}
+.links .contentDiv ul li a {
+  display: block;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  padding-left: 40px;
+  position: relative;
+  width: 100%;
+  text-decoration: none;
+  color: white;
+}
+.links .contentDiv ul li a.wp::before {
+  background-image: url(../images/wp.svg);
+}
+.links .contentDiv ul li a.ig::before {
+  background-image: url(../images/ig.svg);
+}
+.links .contentDiv ul li a.web::before {
+  background-image: url(../images/link.svg);
+}
+.links .contentDiv ul li a.gm::before {
+  background-image: url(../images/location.svg);
+}
+.links .contentDiv ul li a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.links .contentDiv ul li:last-child {
+  margin: 0;
+}
+.links .contentDiv.cols ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.links .contentDiv.cols ul li {
+  flex: 0 0 calc(50% - 5px);
+}
+
+body {
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: #00D6CA;
+  background: linear-gradient(0deg, rgb(0, 214, 202) 0%, rgb(8, 158, 151) 100%);
+  background-size: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+.hero .fakeLeftRadius {
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 100%;
+  left: 20px;
+  background-image: url(../images/fakeRadius.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+}
+.hero .fakeRightRadius {
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 100%;
+  right: 20px;
+  transform: scaleX(-1);
+  background-image: url(../images/fakeRadius.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+}
+.hero .logo {
+  width: 400px;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+.hero .hero-text {
+  font-size: 16px;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+.hero .hero-text h1 {
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.hero .scroll {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-left: 30px;
+}
+.hero .scroll::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/scroll.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.hero .alignerImage {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  height: auto;
+  display: block;
+  overflow: hidden;
+}
+.hero .alignerImage .alignerImg {
+  display: block;
+  width: 100%;
+  margin-bottom: -20px;
+}
+
+.herospacer {
+  height: 100vh;
+  opacity: 0;
+  background-color: white;
+}
+
+.content {
+  background: white;
+  padding: 0px 40px;
+  z-index: 10;
+  position: relative;
+  opacity: 0;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+#smooth-content {
+  background-color: #00D6CA;
+  padding: 0 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-bottom {
+  align-items: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+section {
+  margin-bottom: 50px;
+}
+section:last-child {
+  margin-bottom: 0;
+}
+
+.half .left,
+.half .right {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 20px;
+}
+.half .left p,
+.half .right p {
+  margin-bottom: 0;
+}
+
+.twothirds .left {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+  padding: 0 20px;
+}
+.twothirds .right {
+  flex: 0 0 66.66666%;
+  max-width: 66.66666%;
+  padding: 0 20px;
+}
+.twothirds .right p {
+  margin: 0;
+}
+
+.imageContainer {
+  border: 1px solid #00D6CA;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+p {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+section ul {
+  list-style: none;
+  counter-reset: listcount;
+}
+section ul li {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 10px;
+  counter-increment: listcount;
+  padding-left: 40px;
+  position: relative;
+}
+section ul li::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  font-family: "Bauhaus", sans-serif;
+  content: counter(listcount);
+  display: block;
+  color: #00D6CA;
+  margin-right: 5px;
+  font-size: 26px;
+}
+section .centerCol {
+  max-width: 768px;
+  margin: 0 auto;
+}
+section .centerCol h2 {
+  text-align: center;
+}
+section .centerCol > p {
+  text-align: center;
+}
+section p {
+  margin-bottom: 30px;
+}
+
+.comparisonHeader .flex {
+  margin: 0 -20px;
+}
+.comparisonHeader .left,
+.comparisonHeader .right {
+  padding: 0 20px;
+}
+.comparisonHeader .left .title,
+.comparisonHeader .right .title {
+  background-color: #00D6CA;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-weight: 300;
+}
+
+.comparisonBody .left {
+  padding: 0 40px 0 20px;
+}
+.comparisonBody .right {
+  padding: 0 20px 0 40px;
+}
+.comparisonBody .item {
+  display: flex;
+  margin-bottom: 30px;
+  align-items: flex-start;
+}
+.comparisonBody .item .image {
+  flex: 0 0 30%;
+  max-width: 30%;
+  height: auto;
+  background-color: #00D6CA;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #00D6CA;
+}
+.comparisonBody .item .image img {
+  display: block;
+  width: 100%;
+}
+.comparisonBody .item .text {
+  padding-left: 20px;
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+.comparisonBody .item .text .title {
+  color: #00D6CA;
+  font-size: 20px;
+}
+.comparisonBody .item .text p {
+  margin-bottom: 0;
+}
+
+footer {
+  color: white;
+  padding: 20px 40px;
+}
+footer .left,
+footer .right,
+footer #year {
+  font-weight: 300;
+}
+footer .left {
+  font-size: 24px;
+}
+footer .right {
+  line-height: 26px;
+}
+footer .bold {
+  font-weight: normal;
+}
+
+/*# sourceMappingURL=styles.css.map */

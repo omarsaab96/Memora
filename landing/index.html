@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Memora</title>
+</head>
+
+<body>
+
+    <div class="comingSoon">
+        <img class="logo" src="./images/memora.png" alt="">
+
+        <div class="countdown">
+            <div class="title">Coming soon</div>
+            <div class="counter">
+                <div class="timeUnit">
+                    <div class="number" id="days">35</div>
+                    <div class="label">Days</div>
+                </div>
+
+                <div class="timeUnit">
+                    <div class="number" id="hours">35</div>
+                    <div class="label">Hours</div>
+                </div>
+
+                <div class="timeUnit">
+                    <div class="number" id="minutes">35</div>
+                    <div class="label">Mins</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social">
+            <a href="https://www.instagram.com/" class="icon ig"></a>
+        </div>
+    </div>
+
+
+    <img class="image" src="./images/WhatsApp_Image_2025-07-10_at_1.00.05_PM-removebg-preview.png" alt="">
+
+
+    <script>
+        const targetDate = new Date('2026-01-01T00:00:00');
+        targetDate.setDate(targetDate.getDate());
+        targetDate.setHours(targetDate.getHours());
+
+        function updateCountdown() {
+            const now = new Date();
+            const distance = targetDate - now;
+
+            if (distance <= 0) {
+                document.getElementById("countdown").innerHTML = "Launched!";
+                clearInterval(timer);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((distance / (1000 * 60)) % 60);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        }
+
+        updateCountdown(); // initial call
+        const timer = setInterval(updateCountdown, 1000 * 60); // update every minute
+    </script>
+
+    <script>
+        new ResizeObserver(entries => {
+            for (const entry of entries) {
+                console.log('Resized:', entry.target);
+            }
+        }).observe(document.body);
+    </script>
+</body>
+
+</html>
