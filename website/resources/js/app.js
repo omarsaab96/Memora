@@ -1,5 +1,9 @@
 import '../css/app.css';
+import '../scss/app.scss';
 import './bootstrap';
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -29,3 +33,6 @@ createInertiaApp({
         color: 'dodgerblue',
     },
 });
+
+AOS.init();
+

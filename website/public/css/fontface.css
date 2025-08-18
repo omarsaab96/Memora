@@ -659,3 +659,21 @@
     src: url(https://ka-p.fontawesome.com/releases/v6.7.2/webfonts/pro-fa-duotone-900-28.woff2) format("woff2"), url(https://ka-p.fontawesome.com/releases/v6.7.2/webfonts/pro-fa-duotone-900-28.ttf) format("truetype");
     unicode-range: u+f88d-f892, u+f895-f896, u+f898-f89d, u+f8a0-f8a5, u+f8a7-f8a8, u+f8aa-f8b0, u+f8b3-f8ba, u+f8bd-f8c6, u+f8c8-f8c9, u+f8cb-f8d1, u+f8d3-f8d5, u+f8d8, u+f8da-f8de, u+f8e2-f8e4, u+f8e6, u+f8e9-f8ed, u+f8f0-f8fc, u+f8fe-f8ff, u+10f88d-10f892, u+10f895-10f896, u+10f898-10f89d, u+10f8a0-10f8a5, u+10f8a7-10f8a8, u+10f8aa-10f8b0, u+10f8b3-10f8ba, u+10f8bd-10f8c6, u+10f8c8-10f8c9, u+10f8cb-10f8d1, u+10f8d3-10f8d5, u+10f8d8, u+10f8da-10f8de, u+10f8e2-10f8e4, u+10f8e6, u+10f8e9-10f8ed, u+10f8f0-10f8fc, u+10f8fe-10f8ff
   }
+
+  @font-face {
+  font-family: "Bauhaus";
+  src: url("./fonts/BauhausStd-Demi.eot");
+  src: local("Bauhaus Std Demi"), local("./fonts/BauhausStd-Demi"), url("./fonts/BauhausStd-Demi.eot?#iefix") format("embedded-opentype"), url("./fonts/BauhausStd-Demi.woff2") format("woff2"), url("./fonts/BauhausStd-Demi.woff") format("woff"), url("./fonts/BauhausStd-Demi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bauhaus";
+  src: url("./fonts/BauhausStd-Light.eot");
+  src: local("Bauhaus Std Light"), local("./fonts/BauhausStd-Light"), url("./fonts/BauhausStd-Light.eot?#iefix") format("embedded-opentype"), url("./fonts/BauhausStd-Light.woff2") format("woff2"), url("./fonts/BauhausStd-Light.woff") format("woff"), url("./fonts/BauhausStd-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
