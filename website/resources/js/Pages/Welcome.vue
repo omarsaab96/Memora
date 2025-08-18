@@ -2,7 +2,7 @@
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ref,onMounted  } from "vue";
+import { ref, onMounted } from "vue";
 import { Head, Link } from '@inertiajs/vue3';
 import $ from "jquery";
 
@@ -38,7 +38,7 @@ onMounted(() => {
         const progress2 = Math.min(Math.max((scrollY - start2) / (end2 - start2), 0), 1);
 
         // interpolate height from 100vh to 100px
-        const minHeight = 80;
+        const minHeight = 60;
         const maxHeight = window.innerHeight;
         const currentHeight = maxHeight - (maxHeight - minHeight) * progress;
 
@@ -47,7 +47,7 @@ onMounted(() => {
         });
 
         gsap.set(".logo", {
-            scale: 1 - 0.25 * progress2,
+            scale: 1 - 0.5 * progress2,
             y: -20 * progress2
         });
 
@@ -94,6 +94,9 @@ onMounted(() => {
 
         <img src="/images/memora.png" alt="Logo" class="logo" />
         <div class="scroll">Scroll</div>
+        <Link :href="route('login')" class="bannerBtn">
+            Are you a dentist?
+        </Link>
     </div>
 
     <div id="smooth-wrapper">

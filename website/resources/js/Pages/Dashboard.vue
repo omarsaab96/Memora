@@ -361,7 +361,7 @@ const formatFileSize = (size) => {
     <AuthenticatedLayout class="authLayout">
         <template #header>
             <div class="flex flex-col justify-between">
-                <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200 mb-5 flex items-center">
+                <h2 class="text-xl font-semibold leading-tight text-white mb-5 flex items-center">
                     Hi, 
                     <span
                         v-if="$page.props.auth.user.type == 'normal'">
@@ -405,22 +405,22 @@ const formatFileSize = (size) => {
 
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 flex-col flex md:flex-row gap-4 md:gap-4 onMobileColumnFlip">
 
-                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800 w-full">
+                <div class="overflow-hidden bg-[#00D6CA] shadow-sm sm:rounded-lg w-full">
                     <div class="p-6 text-gray-900 dark:text-gray-100 smallerPaddings">
-                        <h3 class="mb-[20px] font-semibold text-[20px] border-b border-gray-100 dark:border-gray-700"
+                        <h3 class="mb-[20px] font-semibold text-[20px] border-b border-white "
                             v-if="$page.props.auth.user.type != 'superadmin'">
                             Previous Orders
                         </h3>
                         <div v-if="orders.length == 0" class="text-white italic text-[14px]">No orders</div>
                         <ul v-if="orders.length>0">
                             <li v-for="order in orders" :key="order.id" :class="{
-                                'border-gray-300 dark:border-gray-600 ': order.status === 'new',
+                                'border-white ': order.status === 'new',
                                 'border-yellow-500 border-opacity-50': order.status === 'processing',
                                 'border-blue-400 border-opacity-50': order.status === 'shipped',
                                 'border-green-500 border-opacity-50': order.status === 'done',
                                 'border-red-500 border-opacity-50': order.status === 'canceled'
                             }"
-                                class="p-2 relative mb-[20px] last:mb-0 block w-full rounded-[10px]  border-2 shadow-sm dark:bg-gray-700 dark:text-white">
+                                class="p-2 text-white bg-[#00D6CA] relative mb-[20px] last:mb-0 block w-full rounded-[10px]  border-2 shadow-sm ">
                                 <div :class="{
                                     'bg-white text-gray-700': order.status === 'new',
                                     'bg-yellow-500 text-yellow-800': order.status === 'processing',
@@ -436,7 +436,7 @@ const formatFileSize = (size) => {
                                     <div class="text-[18px] mb-[5px] font-bold leading-[20px]">
                                         {{ order.name }}
                                     </div>
-                                    <div class="flex items-center mb-[15px] dark:text-gray-400 text-[12px] leading-[12px]"
+                                    <div class="flex items-center mb-[15px] text-[12px] leading-[12px]"
                                         v-html="formatDate(order.created_at)">
                                     </div>
                                     <div class="text-[14px] mb-[10px] leading-[16px]" v-if="order.description!=null">
@@ -449,13 +449,13 @@ const formatFileSize = (size) => {
                                     <div class="text-[14px] leading-[16px] flex items-center">
                                         <span class="mr-[10px]">Attached files ({{ order.attachments?.length }})</span>
                                         <a href="javascript:;"
-                                            class="uploadedFileToggle hover:text-gray-900 transition text-[12px] leading-[16px]">
+                                            class="uploadedFileToggle hover:text-blue-800 transition text-[12px] leading-[16px]">
                                             Show files <i></i>
                                         </a>
                                     </div>
                                     <ul class="uploadedFilesUl pt-2 hide transition">
                                         <li v-for="file in order.attachments" :key="file.id"
-                                            class="p-[5px] block w-full rounded-[5px] dark:text-white transition hover:bg-gray-900">
+                                            class="p-[5px] block w-full rounded-[5px]  hover:bg-blue-800 transition">
                                             <a :href="file.file_path">
                                                 <div class="flex justify-between items-center">
                                                     <div class="mr-[10px] w-[15px]">
@@ -484,13 +484,13 @@ const formatFileSize = (size) => {
                         </ul>
                     </div>
 
-                    <div class="hidden p-6 text-gray-900 dark:text-gray-100 ">
-                        <h3 class="mb-[20px] font-semibold text-[20px] border-b border-gray-100 dark:border-gray-700">
+                    <div class="hidden p-6 text-gray-900 ">
+                        <h3 class="mb-[20px] font-semibold text-[20px] border-b border-gray-100">
                             Files</h3>
                         <ul>
                             <li v-for="file in files" :key="file.id"
-                                class="p-2 mb-[20px] last:mb-0 block w-full rounded-[10px] border-gray-300 border-2 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white hover:border-gray-400 focus:border-gray-400">
-                                <!-- <div class="fileName">{{ file.name }}</div> -->
+                                class="p-2 mb-[20px] last:mb-0 block w-full rounded-[10px] border-gray-300 border-2 shadow-sm drk:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white hover:border-gray-400 focus:border-gray-400">
+                                <!-- <div class="fileName">{{ file.name }}</div> -->a
                                 <div class="flex items-center">
                                     <div class="mr-[10px] w-[30px]">
                                         <img class="w-[30px]" src="../../../public/images/stlfile.svg" alt="">
@@ -521,12 +521,12 @@ const formatFileSize = (size) => {
                     </div>
                 </div>
 
-                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800 w-full"
+                <div class="overflow-hidden bg-[#00D6CA] shadow-sm sm:rounded-lg  w-full"
                     v-if="$page.props.auth.user.type == 'normal'">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
 
                         <h3
-                            class="flex align-center mb-[20px] pb-[10px] font-semibold text-[20px] leading-[20px] border-b border-gray-100 dark:border-gray-700">
+                            class="flex align-center mb-[20px] pb-[10px] font-semibold text-[20px] leading-[20px] border-b border-white">
 
                             <div class="flex align-center justify-between mr-[5px] text-[20px] leading-[20px]"
                                 v-if="form.processing && form.status != 'done'">
@@ -536,7 +536,7 @@ const formatFileSize = (size) => {
                             <div class="flex align-center justify-between mr-[5px] text-[20px] leading-[20px]"
                                 v-if="form.status == 'done'">
                                 <span class="w-[30px]">
-                                    <i class="fa-solid fa-check text-[20px] leading-[20px] text-[#1cdb5c]"></i>
+                                    <i class="fa-solid fa-check text-[20px] leading-[20px] text-white"></i>
                                 </span>
                                 <span class="">Files uploaded!</span>
                             </div>
@@ -548,27 +548,27 @@ const formatFileSize = (size) => {
                         <form @submit.prevent="handleSubmit">
                             <div class="mb-4 hideOnProcessing">
                                 <label for="name"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Patient's name</label>
+                                    class="block text-sm font-medium text-white">Patient's name</label>
                                 <input type="text" id="name" :disabled="form.processing" v-model="form.name"
                                     @input="validateFieldName" :class="{ '!border-red-500': formNameError }"
-                                    class="mt-1 block w-full rounded-[10px] border-gray-300 transition border-2 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white hover:border-gray-400 focus:border-gray-400 focus:ring-0 focus:outline-none">
+                                    class="mt-1 block w-full rounded-[10px] border-white transition border-2 bg-[#00D6CA] text-white shadow-sm focus:border-white focus:ring-0 focus:outline-none">
                             </div>
 
                             <div class="mb-4 hideOnProcessing">
                                 <label for="description"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
+                                    class="block text-sm font-medium text-white">Description</label>
                                 <textarea type="text" id="name" :disabled="form.processing" v-model="form.description"
                                 @input="validateFieldDescription" :class="{ '!border-red-500': formDescriptionError }"
-                                    class="mt-1 block w-full rounded-[10px] border-gray-300 transition border-2 shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white hover:border-gray-400 focus:border-gray-400 focus:ring-0 focus:outline-none h-[150px] resize-none"></textarea>
+                                class="mt-1 block w-full rounded-[10px] border-white transition border-2 bg-[#00D6CA] text-white shadow-sm focus:border-white focus:ring-0 focus:outline-none"></textarea>
                             </div>
 
                             <div class="hideOnProcessing mb-4">
-                                <span class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Document
+                                <span class="mb-1 block text-sm font-medium text-white">Document
                                     (STL
                                     file)</span>
 
                                 <div v-bind="getRootProps()" :class="{ '!border-red-500': formFilesError }"
-                                    class="dropzone flex justify-center w-full h-32 px-4 transition border-2 shadow-sm dark:bg-gray-700 border-gray-600 border-dashed rounded-[10px] appearance-none cursor-pointer hover:border-gray-400  focus:ring-0 outline-none">
+                                    class="dropzone flex justify-center w-full h-32 px-4 transition border-2 shadow-sm bg-[#00D6CA] border-white border-dashed rounded-[10px] appearance-none cursor-pointer focus:ring-0 outline-none">
                                     <input v-bind="getInputProps()" />
                                     <span class="flex items-center space-x-2">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -579,10 +579,10 @@ const formatFileSize = (size) => {
                                         </svg>
                                         <p v-if="isDragActive">Drop the files here ...</p>
 
-                                        <span v-else class="font-medium text-gray-600 dark:text-white">
+                                        <span v-else class="font-medium text-white">
                                             Drop files to Attach, or
                                             <span
-                                                class="text-blue-600 dark:text-white underline transition hover:text-blue-600">browse</span>
+                                                class="text-white underline transition ">browse</span>
                                         </span>
 
                                     </span>
@@ -590,7 +590,7 @@ const formatFileSize = (size) => {
                                 </div>
                             </div>
 
-                            <div class="hideOnDone p-1 shadow-sm rounded-[10px] mb-[20px] mt-[0px] " role="alert"
+                            <div class="hideOnDone p-1 rounded-[10px] mb-[20px] mt-[0px] " role="alert"
                                 v-if="formAcceptedFiles.length > 0">
                                 <!-- <p class="flex justify-between mb-[20px]"><span class="font-bold">Files
                                         uploaded</span>
@@ -634,7 +634,7 @@ const formatFileSize = (size) => {
                                             <div
                                                 v-if="form.processing && uploadProgress[file.id] > 0 && file.status == 'uploaded'">
                                                 <i
-                                                    class="fa-solid fa-check text-[16px] leading-[16px] text-[#1cdb5c]"></i>
+                                                    class="fa-solid fa-check text-[16px] leading-[16px] text-white"></i>
                                             </div>
                                             <div
                                                 v-if="form.processing && uploadProgress[file.id] && file.status != 'uploaded'">
@@ -708,7 +708,7 @@ const formatFileSize = (size) => {
 
 .progress-bar-fill {
     height: 100%;
-    background-color: #1cdb5c;
+    background-color: white;
     transition: width 0.2s ease-in-out;
 }
 </style>

@@ -21,7 +21,7 @@ defineProps({
 
     <AuthenticatedLayout class="authLayout">
         <template #header>
-            <h2 class="someSpace text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200 mb-5 flex items-center">
+            <h2 class="someSpace text-xl font-semibold leading-tight text-white mb-5 flex items-center">
                 Hi,
                 <span v-if="$page.props.auth.user.type == 'normal'">
                     &nbsp;Dr.&nbsp;

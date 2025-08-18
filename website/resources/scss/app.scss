@@ -177,7 +177,7 @@ h2 {
             font-weight: 300;
             font-family: 'Poppins', sans-serif;
             font-size: 18px;
-            margin-bottom:15px;
+            margin-bottom: 15px;
         }
     }
 
@@ -241,7 +241,7 @@ h2 {
 
 #smooth-content {
     background-color: $primCol;
-    padding:0 5px;
+    padding: 0 5px;
 }
 
 .flex {
@@ -276,8 +276,8 @@ section {
         max-width: 50%;
         padding: 0 20px;
 
-        p{
-            margin-bottom:0;
+        p {
+            margin-bottom: 0;
         }
     }
 }
@@ -328,18 +328,18 @@ section {
             font-family: "Poppins", sans-serif;
             margin-bottom: 10px;
             counter-increment: listcount;
-            padding-left:40px;
+            padding-left: 40px;
             position: relative;
 
-            b{
-                font-size:18px;
+            b {
+                font-size: 18px;
             }
 
             &::before {
                 position: absolute;
-                top:50%;
-                transform:translateY(-50%);
-                left:0;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
                 font-family: 'Bauhaus', sans-serif;
                 content: counter(listcount);
                 display: block;
@@ -458,5 +458,21 @@ footer {
 
     .bold {
         font-weight: normal;
+    }
+}
+
+.bannerBtn {
+    position: absolute;
+    right: 30px;
+    top:15px;
+    border-radius: 50px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: white;
+    color: #04b8ae;
+    transition:all 0.3s ease-in-out;
+
+    &:hover{
+        transform: translateY(-3px);
     }
 }

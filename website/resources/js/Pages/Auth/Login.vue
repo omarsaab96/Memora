@@ -34,7 +34,7 @@ const submit = () => {
 
         <Head title="Log in" />
 
-        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+        <div v-if="status" class="mb-4 text-sm font-medium text-white">
             {{ status }}
         </div>
 
@@ -60,20 +60,20 @@ const submit = () => {
             <div class="mt-4 flex justify-between items-center mb-[20px]">
                 <label class="flex items-center cursor-pointer">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
+                    <span class="ms-2 text-sm text-white">Remember me</span>
                 </label>
 
                 <Link v-if="canResetPassword" :href="route('password.request')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800">
+                    class="rounded-[30px] text-sm text-white underline hover:text-gray-900 focus:outline-none">
                 Forgot your password?
                 </Link>
             </div>
 
             <div class="flex items-center justify-between columnSmall">
                 <div class="flex items-center">
-                    <p class="text-white">Don't have an account?
+                    <p class="text-white text-[14px]">Don't have an account?
                         <Link :href="route('register')"
-                            class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800">
+                            class="rounded-md text-sm text-white underline hover:text-gray-900 focus:outline-none dark:focus:ring-offset-gray-800">
                         Register
                         </Link>
                     </p>

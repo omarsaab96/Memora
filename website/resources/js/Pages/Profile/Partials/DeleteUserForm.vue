@@ -41,14 +41,14 @@ const closeModal = () => {
 <template>
     <section class="flex content-between items-center gap-4 w-full columnSmall">
         <header class="w-[40%]">
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h2 class="text-lg font-medium text-[#00D6CA] ">
                 Delete Account
             </h2>
 
 
         </header>
-        <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8 dark:bg-gray-800 w-full">
-            <p class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
+        <div class="bg-[#00D6CA] p-4 shadow sm:rounded-lg sm:p-8 w-full">
+            <p class="block text-sm font-medium text-white mb-4">
                 <span>
                     Once your account is deleted, all of its resources and data
                     will be permanently deleted. Before deleting your account,

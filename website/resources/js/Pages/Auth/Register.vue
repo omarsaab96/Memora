@@ -47,11 +47,11 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="email" value="Phone" />
+                <InputLabel for="phone" value="Phone" />
 
                 <TextInput id="phone" type="text" class="mt-1 block w-full" v-model="form.phone" required />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError class="mt-2" :message="form.errors.phone" />
             </div>
 
             <div class="mt-4">
@@ -74,9 +74,9 @@ const submit = () => {
 
             <div class="mt-4 flex items-center justify-between columnSmall">
                 <div class="flex items-center">
-                    <p class="text-white">Already registered?
+                    <p class="text-white text-[14px]">Already registered?
                         <Link :href="route('login')"
-                            class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800">
+                            class="rounded-md text-sm text-white underline hover:text-gray-900 focus:outline-none dark:focus:ring-offset-gray-800">
                         Login
                         </Link>
                     </p>
