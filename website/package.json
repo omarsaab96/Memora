@@ -25,6 +25,7 @@
         "aos": "^2.3.4",
         "gsap": "^3.13.0",
         "jquery": "^3.7.1",
+        "lucide-vue-next": "^0.540.0",
         "owl.carousel": "^2.3.4",
         "swiper": "^11.2.1",
         "uuid": "^11.0.5",

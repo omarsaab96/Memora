@@ -47,17 +47,15 @@ const closeModal = () => {
 
 
         </header>
-        <div class="bg-[#00D6CA] p-4 shadow sm:rounded-lg sm:p-8 w-full">
-            <p class="block text-sm font-medium text-white mb-4">
-                <span>
-                    Once your account is deleted, all of its resources and data
-                    will be permanently deleted. Before deleting your account,
-                    please download any data or information that you wish to
-                    retain.
-                </span>
+        <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8 w-full">
+            <p class="block text-sm font-medium text-gray-600 mb-4">
+                Once your account is deleted, all of its resources and data
+                will be permanently deleted. Before deleting your account,
+                please download any data or information that you wish to
+                retain.
             </p>
             <!-- <div class="flex items-center gap-4 justify-end"> -->
-                <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
+            <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
             <!-- </div> -->
         </div>
 

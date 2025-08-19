@@ -39,12 +39,12 @@ const submitForm = () => {
                 Profile Information
             </h2>
 
-            <p class="mt-1 text-sm text-black">
+            <p class="mt-1 text-sm text-gray-600">
                 Update your account's profile information and email address.
             </p>
         </header>
 
-        <div class="bg-[#00D6CA] p-4 shadow sm:rounded-lg sm:p-8 w-full">
+        <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8 w-full">
             <form @submit.prevent="submitForm()" class="mt-6 space-y-6">
                 <div>
                     <InputLabel for="name" value="Name" />
@@ -58,13 +58,13 @@ const submitForm = () => {
                 <div>
                     <InputLabel for="email" value="Email" />
 
-                    <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required
+                    <TextInput id="email" type="email" class="text-black mt-1 block w-full" v-model="form.email" required
                         autocomplete="username"
                         v-if="user.email_verified_at === null" />
 
                     <InputError class="mt-2" :message="form.errors.email" />
 
-                    <p class="text-white text-[16px] flex items-center justify-between"
+                    <p class="text-black rounded-md mt-1 p-2 bg-gray-200 text-[16px] flex items-center justify-between"
                         v-if="user.email_verified_at !== null">
                         <span>{{ form.email }}</span>
 

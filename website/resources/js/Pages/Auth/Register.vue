@@ -22,71 +22,111 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout class="guestlayout">
-
+    <GuestLayout>
         <Head title="Register" />
 
-        <form @submit.prevent="submit">
-
-            <div>
-                <InputLabel for="name" value="Name" />
-
-                <TextInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus
-                    autocomplete="name" />
-
-                <InputError class="mt-2" :message="form.errors.name" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
-
-                <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required
-                    autocomplete="username" />
-
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="phone" value="Phone" />
-
-                <TextInput id="phone" type="text" class="mt-1 block w-full" v-model="form.phone" required />
-
-                <InputError class="mt-2" :message="form.errors.phone" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required
-                    autocomplete="new-password" />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
-
-                <TextInput id="password_confirmation" type="password" class="mt-1 block w-full"
-                    v-model="form.password_confirmation" required autocomplete="new-password" />
-
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
-            </div>
-
-            <div class="mt-4 flex items-center justify-between columnSmall">
-                <div class="flex items-center">
-                    <p class="text-white text-[14px]">Already registered?
-                        <Link :href="route('login')"
-                            class="rounded-md text-sm text-white underline hover:text-gray-900 focus:outline-none dark:focus:ring-offset-gray-800">
-                        Login
-                        </Link>
-                    </p>
+        <div class="flex items-center justify-center px-6">
+            <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+                
+                <!-- Header -->
+                <div class="text-center mb-6">
+                    <h1 class="text-3xl font-bold text-gray-800">Create Account ✨</h1>
+                    <p class="text-gray-500 text-sm">Join us today and get started</p>
                 </div>
 
+                <!-- Form -->
+                <form @submit.prevent="submit" class="space-y-5">
+                    <!-- Name -->
+                    <div>
+                        <InputLabel for="name" value="Name" class="text-gray-700 font-semibold" />
+                        <TextInput
+                            id="name"
+                            type="text"
+                            class="mt-2 block w-full rounded-xl border-gray-300 focus:border-[#00D6CA] focus:ring-[#00D6CA]"
+                            v-model="form.name"
+                            required
+                            autofocus
+                            autocomplete="name"
+                        />
+                        <InputError class="mt-2" :message="form.errors.name" />
+                    </div>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
-                </PrimaryButton>
+                    <!-- Email -->
+                    <div>
+                        <InputLabel for="email" value="Email" class="text-gray-700 font-semibold" />
+                        <TextInput
+                            id="email"
+                            type="email"
+                            class="mt-2 block w-full rounded-xl border-gray-300 focus:border-[#00D6CA] focus:ring-[#00D6CA]"
+                            v-model="form.email"
+                            required
+                            autocomplete="username"
+                        />
+                        <InputError class="mt-2" :message="form.errors.email" />
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <InputLabel for="phone" value="Phone" class="text-gray-700 font-semibold" />
+                        <TextInput
+                            id="phone"
+                            type="text"
+                            class="mt-2 block w-full rounded-xl border-gray-300 focus:border-[#00D6CA] focus:ring-[#00D6CA]"
+                            v-model="form.phone"
+                            required
+                        />
+                        <InputError class="mt-2" :message="form.errors.phone" />
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <InputLabel for="password" value="Password" class="text-gray-700 font-semibold" />
+                        <TextInput
+                            id="password"
+                            type="password"
+                            class="mt-2 block w-full rounded-xl border-gray-300 focus:border-[#00D6CA] focus:ring-[#00D6CA]"
+                            v-model="form.password"
+                            required
+                            autocomplete="new-password"
+                        />
+                        <InputError class="mt-2" :message="form.errors.password" />
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <InputLabel for="password_confirmation" value="Confirm Password" class="text-gray-700 font-semibold" />
+                        <TextInput
+                            id="password_confirmation"
+                            type="password"
+                            class="mt-2 block w-full rounded-xl border-gray-300 focus:border-[#00D6CA] focus:ring-[#00D6CA]"
+                            v-model="form.password_confirmation"
+                            required
+                            autocomplete="new-password"
+                        />
+                        <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                    </div>
+
+                    <!-- Submit -->
+                    <PrimaryButton
+                        class="w-full justify-center rounded-xl bg-[#00D6CA] text-white py-3 font-semibold hover:bg-[#00b5ac] transition disabled:opacity-50"
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                    >
+                        Register
+                    </PrimaryButton>
+                </form>
+
+                <!-- Footer -->
+                <div class="text-center mt-6 text-sm text-gray-600">
+                    Already registered?
+                    <Link
+                        :href="route('login')"
+                        class="text-[#00D6CA] font-semibold hover:underline"
+                    >
+                        Login
+                    </Link>
+                </div>
             </div>
-        </form>
+        </div>
     </GuestLayout>
 </template>

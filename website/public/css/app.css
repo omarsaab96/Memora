@@ -337,7 +337,7 @@ a.logo_white {
 
 .uploadedFileToggle:hover::after,
 .userOrderToggle:hover::after {
-    filter: brightness(0) saturate(100%) invert(7%) sepia(56%) saturate(634%) hue-rotate(182deg) brightness(92%) contrast(95%);
+    filter: brightness(0) saturate(100%) invert(80%) sepia(45%) saturate(5383%) hue-rotate(128deg) brightness(96%) contrast(101%);
 }
 
 .uploadedFileToggle::after,
@@ -719,3 +719,8 @@ a.logo_white {
 
 
 }
+.filter{
+filter: brightness(0) saturate(100%) invert(32%) sepia(7%) saturate(1219%) hue-rotate(176deg) brightness(95%) contrast(88%);
+}
+.filterprimary{
+filter: brightness(0) saturate(100%) invert(73%) sepia(15%) saturate(5263%) hue-rotate(125deg) brightness(93%) contrast(101%);}

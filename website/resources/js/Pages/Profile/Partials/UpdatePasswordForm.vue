@@ -40,13 +40,13 @@ const updatePassword = () => {
                 Update Password
             </h2>
 
-            <p class="mt-1 text-sm text-black">
+            <p class="mt-1 text-sm text-gray-600">
                 Ensure your account is using a long, random password to stay
                 secure.
             </p>
         </header>
 
-        <div class="bg-[#00D6CA] p-4 shadow sm:rounded-lg sm:p-8  w-full">
+        <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8 w-full">
             <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
                 <div>
                     <InputLabel for="current_password" value="Current Password" />
