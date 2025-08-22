@@ -75,6 +75,17 @@ const remarks = [
     "Mild pressure or discomfort is normal for the first few days of wearing a new aligner."
 ]
 
+const issues = [
+    "Teeth crowding",
+    "Teeth spacing",
+    "Midline shift",
+    "Crossbite",
+    "Open bite",
+    "Deep bite",
+    "Overjet bite",
+]
+
+
 const openIndex = ref(null)
 
 const toggle = (i) => {
@@ -289,7 +300,7 @@ onMounted(() => {
                             Conventional vs <span class="text-[#00D6CA]">Shape Memory Direct Aligners</span>
                         </h2>
                         <p class="mt-3 text-gray-600">
-                            A clear comparison of how Memora’s shape memory technology outperforms traditional
+                            A clear comparison of how Memora's shape memory technology outperforms traditional
                             thermoformed aligners.
                         </p>
                     </div>
@@ -322,6 +333,43 @@ onMounted(() => {
                                 <!-- <h4 class="font-bold text-[#00D6CA] mb-2">{{ item.right.title }}</h4> -->
                                 <p class="text-gray-700 leading-relaxed">{{ item.right.text }}</p>
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="pt-12 mb-0">
+                    <div class="max-w-6xl mx-auto text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+                            Is this treatment right <span class="text-[#00D6CA]">for you</span>?
+                        </h2>
+                        <p class="mt-3 text-gray-600">
+                            Our solution is designed for people with the following smile concerns
+                            and who can follow the treatment instructions.
+                        </p>
+                    </div>
+                    <div class="flex max-w-6xl mx-auto align-center">
+                        <div class="w-[50%]">
+                            <!-- Smile Issues -->
+                            <div class="bg-white">
+                                <!-- <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                                Common smile concerns
+                            </h3> -->
+                                <ul class="list-none">
+                                    <li v-for="(item, idx) in issues" :key="idx"
+                                        class="flex items-start gap-3 text-gray-700 mb-[20px] last:mb-0">
+                                        {{ item }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="w-[50%] grid grid-cols-2 sm:grid-cols-2 gap-3">
+                            <img src="/images/r1.jpeg" alt="Reason 1" class="rounded-3xl shadow-md transition" />
+                            <img src="/images/r2.jpeg" alt="Reason 2" class="rounded-3xl shadow-md transition" />
+                            <img src="/images/r3.jpeg" alt="Reason 3" class="rounded-3xl shadow-md transition" />
+                            <img src="/images/r4.jpeg" alt="Reason 4" class="rounded-3xl shadow-md transition" />
+                            <img src="/images/r5.jpeg" alt="Reason 5" class="rounded-3xl shadow-md transition" />
+                            <img src="/images/r6.jpeg" alt="Reason 6" class="rounded-3xl shadow-md transition" />
+
                         </div>
                     </div>
                 </section>

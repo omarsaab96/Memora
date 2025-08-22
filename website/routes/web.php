@@ -16,6 +16,10 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/links', function () {
+    return Inertia::render('Links');
+})->name('links');
+
 Route::get('/dashboard', function(){
     $user = Auth::user();
 
