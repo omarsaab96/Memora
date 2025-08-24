@@ -537,7 +537,8 @@ footer {
     background-color: white;
     color: #04b8ae;
     transition: all 0.3s ease-in-out;
-    overflow: hidden;
+    overflow: hidden;    
+    z-index:10;
 }
 
 

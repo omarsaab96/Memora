@@ -358,7 +358,7 @@ onMounted(() => {
 
         <!-- Floating absolute menu -->
         <div v-if="isOpen" class="burgerMenu border border-gray-200 rounded-xl shadow-sm">
-            <button @click="toggleMenu" class="burgerMenuToggle left-[15px] md:left-[30px]" :class="{ 'open': isOpen }">
+            <button @click="toggleMenu" class="md:hidden burgerMenuToggle left-[15px] md:left-[30px]" :class="{ 'open': isOpen }">
 
             </button>
             <ul class="min-w-[170px]">
