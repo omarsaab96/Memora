@@ -8,6 +8,43 @@ import { ref, onMounted } from "vue";
 import { Head, Link } from '@inertiajs/vue3';
 import $ from "jquery";
 
+
+const name = ref('');
+const email = ref('');
+const message = ref('');
+const loading = ref(false);
+
+const submitForm = async (e) => {
+    e.preventDefault()
+    loading.value = true
+
+    try {
+        const response = await axios.post('/contact', {
+            name: name.value,
+            email: email.value,
+            message: message.value
+        })
+
+        if (response.data.success) {
+            // reset form
+            name.value = ''
+            email.value = ''
+            message.value = ''
+
+            $('.formContact').hide();
+            $('.formConfirmation').removeClass('hidden').addClass('flex');
+        } else {
+            alert('Failed: ' + response.data.message)
+        }
+    } catch (error) {
+        console.error(error)
+        alert('Something went wrong. Please try again.')
+    } finally {
+        loading.value = false
+    }
+}
+
+
 const isOpen = ref(false);
 
 const toggleMenu = () => {
@@ -222,12 +259,22 @@ onMounted(() => {
         smoothTouch: 0.1,
     });
 
+    const myDiv = document.querySelector(".fixedcontent"); // or any div you want to change
+
+
     gsap.ticker.add(() => {
         const scrollY = smoother.scrollTop();
+        const maxScroll = smoother.content().offsetHeight - window.innerHeight;
         const start = 0;
         const end = 400; // change this to how far you want the animation to last
         const start2 = 100;
         const end2 = 300;
+
+        if (scrollY >= maxScroll - 220) {
+            myDiv.style.zIndex = "1";
+        } else {
+            myDiv.style.zIndex = "0"; // reset to default
+        }
 
         // clamp between 0 and 1
         const progress = Math.min(Math.max((scrollY - start) / (end - start), 0), 1);
@@ -264,11 +311,15 @@ onMounted(() => {
             opacity: 0 + progress2,
         });
 
-        gsap.set(".herospacer", {
+        // gsap.set(".herospacer", {
+        //     opacity: 0 + progress2,
+        // });
+
+        gsap.set(".content section", {
             opacity: 0 + progress2,
         });
 
-        gsap.set(".content", {
+        gsap.set(".fixedcontent", {
             opacity: 0 + progress2,
         });
     });
@@ -414,7 +465,8 @@ onMounted(() => {
                                 <component :is="item.icon" class="w-8 h-8 text-[#00D6CA]" />
                             </div>
                             <div>
-                                <p class="text-[14px] md:text-sm text-gray-700 font-medium leading-relaxed mb-0" v-html="item.text"></p>
+                                <p class="text-[14px] md:text-sm text-gray-700 font-medium leading-relaxed mb-0"
+                                    v-html="item.text"></p>
                             </div>
                         </div>
                     </div>
@@ -600,25 +652,179 @@ onMounted(() => {
                         </div>
                     </div>
                 </section>
-
-
             </div>
-
-            <footer>
-                <div class="flex align-center justify-between">
-                    <div class="left">
-                        <span class="bold">memora</span>aligners
-                    </div>
-
-                    <div class="right">
-                        &copy;
-                        {{ new Date().getFullYear() }}
-                        All rights reserved
-                    </div>
-                </div>
-            </footer>
+            <div class="footerspacer"></div>
         </div>
     </div>
 
+    <div class="fixedcontent fixed bottom-0 w-full opacity-0">
+        <section class="contactus px-[40px] pt-12 mb-5">
+            <div class="">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-white sm:text-4xl">Get in Touch</h2>
+                    <p class="mt-4 text-white mb-0">
+                        Send us a message and we'll get back to you as soon as possible.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Contact Info -->
+                    <div class="space-y-2">
+                        <div class="flex align-center gap-4 mb-4">
+                            <h3 class="mb-0 text-white">Reach us on</h3>
+                            <div class="flex items-start space-x-4 ">
+                                <a class="link transition hover:text-gray-500"
+                                    href="https://wa.me/96181909548?text=Hello!%20I%20would%20like%20to%20know%20more%20about%20Memora"
+                                    target="_blank">
+                                    <svg height="56.693px" id="Layer_1" fill="white"
+                                        class="h-8 w-8 transition hover:fill-gray-500"
+                                        style="enable-background:new 0 0 56.693 56.693;" version="1.1"
+                                        viewBox="0 0 56.693 56.693" width="56.693px" xml:space="preserve"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                                        <g>
+                                            <path class="st0"
+                                                d="M46.3802,10.7138c-4.6512-4.6565-10.8365-7.222-17.4266-7.2247c-13.5785,0-24.63,11.0506-24.6353,24.6333   c-0.0019,4.342,1.1325,8.58,3.2884,12.3159l-3.495,12.7657l13.0595-3.4257c3.5982,1.9626,7.6495,2.9971,11.7726,2.9985h0.01   c0.0008,0-0.0006,0,0.0002,0c13.5771,0,24.6293-11.0517,24.635-24.6347C53.5914,21.5595,51.0313,15.3701,46.3802,10.7138z    M28.9537,48.6163h-0.0083c-3.674-0.0014-7.2777-0.9886-10.4215-2.8541l-0.7476-0.4437l-7.7497,2.0328l2.0686-7.5558   l-0.4869-0.7748c-2.0496-3.26-3.1321-7.028-3.1305-10.8969c0.0044-11.2894,9.19-20.474,20.4842-20.474   c5.469,0.0017,10.6101,2.1344,14.476,6.0047c3.8658,3.8703,5.9936,9.0148,5.9914,14.4859   C49.4248,39.4307,40.2395,48.6163,28.9537,48.6163z" />
+                                            <path class="st0"
+                                                d="M40.1851,33.281c-0.6155-0.3081-3.6419-1.797-4.2061-2.0026c-0.5642-0.2054-0.9746-0.3081-1.3849,0.3081   c-0.4103,0.6161-1.59,2.0027-1.9491,2.4136c-0.359,0.4106-0.7182,0.4623-1.3336,0.1539c-0.6155-0.3081-2.5989-0.958-4.95-3.0551   c-1.83-1.6323-3.0653-3.6479-3.4245-4.2643c-0.359-0.6161-0.0382-0.9492,0.27-1.2562c0.2769-0.2759,0.6156-0.7189,0.9234-1.0784   c0.3077-0.3593,0.4103-0.6163,0.6155-1.0268c0.2052-0.4109,0.1027-0.7704-0.0513-1.0784   c-0.1539-0.3081-1.3849-3.3379-1.8978-4.5706c-0.4998-1.2001-1.0072-1.0375-1.3851-1.0566   c-0.3585-0.0179-0.7694-0.0216-1.1797-0.0216s-1.0773,0.1541-1.6414,0.7702c-0.5642,0.6163-2.1545,2.1056-2.1545,5.1351   c0,3.0299,2.2057,5.9569,2.5135,6.3676c0.3077,0.411,4.3405,6.6282,10.5153,9.2945c1.4686,0.6343,2.6152,1.013,3.5091,1.2966   c1.4746,0.4686,2.8165,0.4024,3.8771,0.2439c1.1827-0.1767,3.6419-1.489,4.1548-2.9267c0.513-1.438,0.513-2.6706,0.359-2.9272   C41.211,33.7433,40.8006,33.5892,40.1851,33.281z" />
+                                        </g>
+                                    </svg>
+                                </a>
+                                <a class="link transition hover:text-gray-500"
+                                    href="https://www.instagram.com/memoraaligners/" target="_blank">
+
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" fill="white"
+                                        class="h-8 w-8 transition hover:fill-gray-500 "
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 56.7 56.7" enable-background="new 0 0 56.7 56.7"
+                                        xml:space="preserve">
+                                        <g>
+                                            <path
+                                                d="M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7   c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z" />
+                                            <circle cx="41.5" cy="16.4" r="2.9" />
+                                            <path
+                                                d="M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9   h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3   s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6   c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z" />
+                                        </g>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v9a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white">Email</h3>
+                                <p class="text-white opacity-[0.9] mb-0"></p>
+                                <a class="link transition hover:text-gray-500"
+                                    href="mailto:info@memoraaligners.com">info@memoraaligners.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 10l1.664 3.328A2 2 0 007 15h10a2 2 0 001.336-.672L21 10M12 3v4m-6 4h12" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white">Phone</h3>
+                                <a class="link transition hover:text-gray-500" href="tel:+961 81 909 548">+961 81 909
+                                    548</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="text-white">
+                                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="white"
+                                    class="h-6 w-6">
+                                    <title />
+                                    <g data-name="1" id="_1">
+                                        <path
+                                            d="M257,450.17a15,15,0,0,1-7.32-1.91A282.08,282.08,0,0,1,105,201.8q0-3.08.06-6.14c1-45.48,17.93-83.78,49-110.75C181.54,61.11,218.09,48,257,48s75.45,13.11,102.9,36.91c31.1,27,48.06,65.27,49,110.75h0c0,2,.07,4.09.07,6.14a281.8,281.8,0,0,1-40,144.87A283.7,283.7,0,0,1,264.32,448.26,15,15,0,0,1,257,450.17ZM257,78c-31.69,0-61.26,10.5-83.25,29.58-24.53,21.26-37.91,51.94-38.69,88.72,0,1.82-.06,3.66-.06,5.5a252.06,252.06,0,0,0,122,216,253.66,253.66,0,0,0,86.28-86.58A251.83,251.83,0,0,0,379,201.8c0-1.84,0-3.68-.06-5.5-.79-36.78-14.17-67.46-38.69-88.72C318.25,88.5,288.69,78,257,78Z" />
+                                        <path
+                                            d="M257.39,296.6a94.32,94.32,0,1,1,94.32-94.32A94.42,94.42,0,0,1,257.39,296.6Zm0-158.63a64.32,64.32,0,1,0,64.32,64.31A64.39,64.39,0,0,0,257.39,138Z" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white">Address</h3>
+                                <p class="text-white opacity-[0.9] mb-0">Hadath Centre, Hadath, Lebanon</p>
+                                <a href="https://www.google.com/maps/place/Hadath+Centre/@33.836546,35.5278024,86m/data=!3m1!1e3!4m14!1m7!3m6!1s0x3a52668475f34635:0xf6e6d01652d6197b!2sOrthoDent!8m2!3d13.0750295!4d80.2249087!16s%2Fg%2F11cn9kg2jc!3m5!1s0x151f19cf11db9955:0xcd9622cc61d45a8d!8m2!3d33.8366239!4d35.5279123!16s%2Fg%2F11h7q4tm31?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D"
+                                    target="_blank" class="link transition hover:text-gray-500">Get directions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form @submit="submitForm" class="formContact w-full max-w-md">
+                        <div class="flex justify-between gap-2 mb-2">
+                            <div class="flex-1">
+                                <label class="block text-sm text-white font-semibold mb-1">Name</label>
+                                <input type="text" placeholder="Your Name" v-model="name"
+                                    class="w-full border-none bg-white rounded-lg px-4 py-2 shadow-none outline-none text-gray-500" />
+                            </div>
+
+                            <div class="flex-1">
+                                <label class="block text-sm text-white font-semibold mb-1">Email</label>
+                                <input type="email" placeholder="you@example.com" v-model="email"
+                                    class="w-full border-none bg-white rounded-lg px-4 py-2 shadow-none outline-none text-gray-500" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="block text-sm text-white font-semibold mb-1">Message</label>
+                            <textarea placeholder="Your Message" rows="2" v-model="message"
+                                class="block w-full !border-none bg-white rounded-lg px-4 py-2 !ring-0 !shadow-none outline-none text-gray-500"></textarea>
+                        </div>
+
+                        <button type="submit" :disabled="loading"
+                            class="inline-flex items-center border border-transparent bg-white px-4 py-3 text-[#00D6CA] text-xs font-semibold uppercase tracking-widest transition duration-300 ease-in-out hover:-translate-y-[2px] w-full justify-center rounded-xl hover:bg-gray-500 hover:text-white">
+                            <template v-if="loading">
+                                <svg class="animate-spin h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                                </svg>
+                                <span>Sending...</span>
+                            </template>
+                            <template v-else>
+                                Send
+                            </template>
+                        </button>
+                    </form>
+
+                    <div class="formConfirmation align-center justify-center gap-5 flex-col hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-white mb-0">Your message is sent successfully!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="flex align-center justify-between">
+                <div class="left">
+                    <span class="bold">memora</span>aligners
+                </div>
+
+                <div class="right">
+                    &copy;
+                    {{ new Date().getFullYear() }}
+                    All rights reserved
+                </div>
+            </div>
+        </footer>
+    </div>
 
 </template>

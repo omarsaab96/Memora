@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\FilesController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -44,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/editFile', [FilesController::class, 'updateFile_isLinked'])->name('editFile');
 
 });
+
+Route::post('/contact', [ContactController::class, 'send']);
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/api.php';

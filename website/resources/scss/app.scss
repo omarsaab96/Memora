@@ -102,13 +102,21 @@ $primCol: #00D6CA;
             }
         }
     }
+}
 
-
+.link{
+    color:white;
+    text-decoration: none;
+    font-size:14px;
+    // font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+    
 }
 
 body {
     overflow-x: hidden;
-    font-size: 16px;
+    font-size: 16px;    
+    background-color: $primCol;
 }
 
 h2 {
@@ -224,8 +232,13 @@ h2 {
 
 .herospacer {
     height: 100vh;
-    opacity: 0;
     background-color: white;
+}
+
+.footerspacer {
+    height: 100vh;
+    opacity: 0;
+    background-color: $primCol;
 }
 
 .content {
@@ -234,13 +247,19 @@ h2 {
     // height: 200vh;
     z-index: 10;
     position: relative;
-    opacity: 0;
+    
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
+
+    section{
+        opacity: 0;
+    }
 }
 
+#smooth-wrapper {
+    z-index:1;
+}
 #smooth-content {
-    background-color: $primCol;
     padding: 0 5px;
 }
 
